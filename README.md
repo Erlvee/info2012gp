@@ -1,2 +1,2 @@
-# info2012gp
+# info212gp
 Group project in the course INFO212 Systemdevelopment
