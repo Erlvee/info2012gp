@@ -145,16 +145,15 @@ body {
 /*-----------------MainContent-------------------*/
 
 .searchBox {
-  margin-top: 2em;
+  margin-top: 1em;
   display: flex;
-  flex-flow: row wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .searchBox input{
-  margin-bottom: 6em;
+  margin-bottom: 1em;
   padding: 6px;
   margin-top: 1em;
   font-size: 17px;
@@ -204,7 +203,36 @@ body {
   border-radius: 10px;
 }
 
+#mapBtn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+#mapBtn button {
+  padding: 12px 18px 12px 18px;
+  border-radius: 10px;
+  background: #2C4760;
+  border: 1px solid #ddd;
+}
+#mapBtn button:hover {
+  background: #ccc;
+}
+
+.fa-map-marker {
+  color: white;
+}
+
 /*-----------------------------RestaurantComponent-----------------*/
+
+.renderRest{
+  max-height: 35em;
+  overflow: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;
+}
 
 .Restaurant {
   grid-template-columns: auto auto auto;
@@ -214,7 +242,6 @@ body {
 }
 
 .Restaurant .resImg {
-  
   grid-column-start: 1;
   grid-column-end: 3;
 }
@@ -242,12 +269,13 @@ body {
 }
 
 .avalability-btn {
-  height: 55%;
-  width: 8em;
-  background:orange linear-gradient(orange,#ff8c00);
+  margin-top:0.25em;
+  height: 90%;
+  width: 6em;
+  background: gainsboro;
   border: 1px solid #ddd;
   border-radius: 10px;
-  color: white;
+  color: gray;
 }
 
 
@@ -302,13 +330,7 @@ font-feature-settings: 'liga';
 * {
 box-sizing: border-box;
 }
-body {
-font-family: 'Open Sans', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-font-size: 1em;
-font-weight: 300;
-line-height: 1.5;
-position: relative;
-}
+
 header {
 display: block;
 width: 100%;
@@ -344,6 +366,9 @@ height: auto;
 margin:0 auto;
 }
 .calendar .header {
+background: rgb(71, 117, 209, 0.8);
+color: white;
+text-align: center;
 text-transform: uppercase;
 font-weight: 700;
 font-size: 115%;
@@ -366,9 +391,10 @@ margin-left: 1em;
 margin-right: 1em;
 }
 .calendar .days {
+margin-left: 2px;
 text-transform: uppercase;
 font-weight: 400;
-color: gray;
+color: black;
 font-size: 70%;
 padding: .75em 0;
 border-bottom: 1px solid lightgray;
@@ -386,10 +412,9 @@ transition: 0.25s ease-out;
 background: whitesmoke;
 transition: 0.5s ease-out;
 }
+
 .calendar .body .selected {
-border-left: 10px solid transparent;
-border-image: linear-gradient(45deg, #1affa0 0%,#cff153 40%);
-border-image-slice: 1;
+background: "green";
 }
 .calendar .body .row {
 border-bottom: 1px solid lightgray;
@@ -419,12 +444,11 @@ pointer-events: none;
 .calendar .body .cell .bg {
 font-weight: 700;
 line-height: 1;
-color: #1affa0;
+color: black;
 opacity: 0;
-font-size: 5em;
+font-size: 2em;
 position: absolute;
-top: -.2em;
-right: -.05em;
+right: 0.1em;
 transition: .25s ease-out;
 letter-spacing: -.07em;
 }
@@ -432,7 +456,7 @@ letter-spacing: -.07em;
   background-color: white;
 }
 .calendar .body .cell:hover .bg, .calendar .body .selected .bg  {
-opacity: 0.2;
+opacity: 0.6;
 transition: .5s ease-in;
 }
 .calendar .body .column {
@@ -440,3 +464,86 @@ flex-grow: 0;
 flex-basis: calc(100%/7);
 width: calc(100%/7);
 }
+.belowCalendarBtn {
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+}
+.belowCalendarBtn input {
+  margin-top: 1em;
+  font-size: 17px;
+  height: 50px;
+  width: 150px;
+  background:  orange linear-gradient(orange,#ff8c00);
+  border: 1px solid #ddd;
+  opacity: 0.75;
+  color: white;
+  font-size: 2;
+  font-weight: 500;
+  border-radius: 10px;
+}
+
+/*-----------------TABLES---------------------*/
+.tableBtnContainer {
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+}
+.tableBtnContainer input {
+  font-size: 17px;
+  height: 3em;
+  width: 3em;
+  background:  orange linear-gradient(orange,#ff8c00);
+  border: 1px solid #ddd;
+  opacity: 0.75;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 10px;
+}
+.tableBtnContainer input:last-child {
+  margin-left: 15px;
+}
+.tableBtnContainer input:first-child {
+  margin-right: 15px;
+}
+
+.tableContainer {
+  text-align:center;
+}
+
+.tableTimes {
+  text-align: center;
+  margin-top: 1.5em;
+  display:table;
+  margin-left:auto; 
+  margin-right:auto;
+  width:50%;
+}
+
+
+.tableTimes thead th {
+  background-color:white;
+}
+
+.tableHead {
+  padding:5px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+/*
+.tableTimes tr:nth-child(even) {
+  background-color: rgba(0,128,0, 0.6);
+}*/
+
+.tbodyTd {
+  padding:12px 5px 12px 5px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+/*.tableTimes tr:nth-child(odd) {
+  background-color:rgba(255, 0, 0, 0.6);
+}*/

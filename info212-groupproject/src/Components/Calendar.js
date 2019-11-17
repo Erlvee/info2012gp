@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import moment from 'moment';
 
 
-function Calendar() {
+function Calendar(props) {
     const [currentDate, setCurrentDate] = useState(moment().format());
     const [selectedDate, setSelectedDate] = useState(moment().format());
    
@@ -50,10 +50,7 @@ function Calendar() {
         const dateFormat = "D";
         const rows = [];
 
-        console.log(monthStart)
-        console.log(currentDate)
         
-
         let days = [];
         let day = startDate;
         let formattedDate = "";
@@ -65,11 +62,13 @@ function Calendar() {
 
                 days.push(
                     <div className={`column cell ${!moment(day).isSame(monthStart,'month') 
-                    ? "disabled" : moment(day).isSame(selectedDate) 
+                    ? "disabled" : moment(cloneDay).isSame(selectedDate) 
                     ? "selected": ""}`} 
                     key={day}
-                    onClick = {() => onDateClick(moment(cloneDay))} 
-                    style={!moment(day).isBefore(currentDate, "day") ? {backgroundColor: cellsColor()} : {backgroundColor: "white"}}>
+                    onClick = {() => {onDateClick(moment(cloneDay));
+                    props.renderCalendar(!props.initCalendar);
+                    props.setTableState(!props.initTables)}} 
+                    style={!moment(day).isBefore(currentDate, "day") ? {backgroundColor: cellsColor()} : {backgroundColor: "white"} }>
                         <span className="number">{formattedDate}</span>
                         <span className="bg">{formattedDate}</span>
                     </div>
@@ -84,8 +83,9 @@ function Calendar() {
         return <div className="body">{rows}</div>
     }
 
-    const onDateClick = day => {
-        setSelectedDate(day)
+
+    const onDateClick = cloneDay => {
+        setSelectedDate(cloneDay);
     }
 
     const nextMonth = () => {
@@ -104,10 +104,15 @@ function Calendar() {
     
 
     return (
-        <div className="calendar">
-            <div>{header()}</div>        
-            <div>{daysOfWeek()}</div>        
-            <div>{cells()}</div>
+        <div className="calendarContainer">
+            <div className="calendar">
+                <div>{header()}</div>        
+                <div>{daysOfWeek()}</div>        
+                <div>{cells()}</div>
+            </div>
+            <div className="belowCalendarBtn">
+                <input type="button" value="Back" onClick={() => {props.renderCalendar(!props.initCalender); props.renderRestComponent(!props.initRestaurant);}}></input>
+            </div>
         </div>
    );
 }

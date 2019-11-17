@@ -14,10 +14,10 @@ function LoginScreen(props) {
                     </label><br></br>
                 <button onClick={() => {props.setLogin(!props.initLogin); props.renderMain(!props.initMain)}} className="subButton" type="submit">Sign in</button><br></br>
                 <p>Or</p><br></br>
+                <button>Create new account</button>
                 <img alt="" className = "facebookLogin" src="./img/contFacebook.png" width="250px"/><br></br>
                 <img alt="" className = "googleLogin" src="./img/contGoogle.png" width="250px"/>
         </div>
     )
 }
-
 export default LoginScreen
